@@ -1,0 +1,99 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATN's Toys</title>
+    <style>
+        /* Style for the main heading */
+        h1 {
+            color: green;
+            font-size: 3rem;
+            margin-top: 2rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    /* Style for the form container */
+    .form-container {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 2rem auto;
+        padding: 1rem;
+        text-align: center;
+        width: 80%;
+    }
+
+    /* Style for the form elements */
+    form input[type="text"] {
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        margin: 0.5rem;
+        padding: 0.5rem;
+        width: 30%;
+    }
+
+    form button[type="submit"] {
+        background-color: green;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    form button[type="submit"]:hover {
+        background-color: darkgreen;
+    }
+
+    /* Style for the quote list */
+    .quote-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .quote {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 1rem;
+        padding: 1rem;
+        text-align: center;
+        width: 50%;
+    }
+
+    .quote span:first-child {
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+</style>
+</head>
+<body>
+    <h1>ATN's Toys</h1>
+    <!-- Form to add a new quote -->
+<div class="form-container">
+    <form action="/quotes" method="POST">
+        <input type="text" placeholder="Name" name="name" required>
+        <input type="text" placeholder="Price" name="quote" required>
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+<!-- List of existing quotes -->
+<div class="quote-list">
+    <% for(var i = 0; i < quotes.length; i++) { %>
+        <div class="quote">
+            <span><%= quotes[i].name %>:</span>
+            <span><%= quotes[i].quote %></span>
+        </div>
+    <% } %>
+</div>
+</body>
+</html>
